@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit </title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+<form th:action="@{/add}" method="post" th:object="${todo}">
+    <input type="hidden" th:field="*{id}">
+    <div class="form-outline form-white mb-4">
+        <input type="text" th:field="*{title}" id="title" class="form-control form-control-lg" placeholder="Title" required minlength="8" maxlength="25"/>
+    </div>
+    <div class="form-outline form-white mb-4">
+        <input type="text" th:field="*{description}" id="description" class="form-control form-control-lg" placeholder="Description" required minlength="5" maxlength="45"/>
+    </div>
+
+    <div class="form-outline form-white mb-4">
+        <select class="form-select" th:field="*{priority}" style="width: 100%"  aria-label="Default select example">
+            <option th:value="Important" th:text="Important"></option>
+            <option th:value="High" th:text="High"></option>
+            <option th:value="Normal" th:text="Normal"></option>
+            <option th:value="Low" th:text="Low"></option>
+        </select>
+    </div>
+    <div class="form-outline form-white mb-4">
+        <input type="text" th:field="*{date}" id="date" class="form-control form-control-lg" th:placeholder="DD.MM.YYYY" required minlength="8" maxlength="45" />
+    </div>
+
+    <div class="form-outline form-white mb-4">
+        <input hidden  type="text" th:value="${userid}" th:name="userId" th:id="userId" th:errorClass="fieldError"class="form-control form-control-lg"  maxlength="45"/>
+    </div>
+    <button class="btn btn-dark btn-lg px-5" type="submit"> Add </button>
+</form>
+
+</body>
+</html>

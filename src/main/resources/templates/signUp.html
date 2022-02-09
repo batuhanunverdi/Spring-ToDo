@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <title>Sign Up</title>
+</head>
+<body>
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <div th:if="${message}" class="alert alert-success text-center">
+                                [[${message}]]
+                            </div>
+                            <h2 class="fw-bold mb-2 text-uppercase">Sign In</h2>
+
+                            <form th:action="@{/signUp/save}" method="post" th:object="${user}">
+                                <div class="form-outline form-white mb-4">
+                                    <input type="email" th:field="*{email}" id="email" class="form-control form-control-lg" placeholder="Email" required minlength="8" maxlength="45"/>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" th:field="*{username}" id="username" class="form-control form-control-lg" placeholder="Username" required minlength="5" maxlength="45"/>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" th:field="*{password}" id="typePasswordX" class="form-control form-control-lg" placeholder="Password" required minlength="8" maxlength="45"/>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" th:field="*{confirmPassword}" id="confirmPassword" class="form-control form-control-lg" placeholder="Confirm Password" required minlength="8" maxlength="45" />
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" th:field="*{firstName}" id="firstName" class="form-control form-control-lg" placeholder="First Name" required minlength="3" maxlength="45"/>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" th:field="*{lastName}" id="lastName" class="form-control form-control-lg" placeholder="Last Name" required minlength="3" maxlength="45"/>
+                                </div>
+
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
+                            </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
